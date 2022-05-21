@@ -28,6 +28,20 @@
         </div>
     </div>
 
+
+    <form action="${pageContext.request.contextPath}/employee/findByIdEmployee">
+        <div class="input-group">
+            <input type="text" name="id" class="form-control" aria-label="...">
+            <div class="input-group-btn">
+                <input class="btn btn-primary" type="submit" value="查询">
+            </div>
+        </div>
+
+<%--        <input type="text" name="finId" class="form-control" aria-label="...">--%>
+<%--        <input type="submit" value="查询">--%>
+    </form>
+
+
     <div class="row clearfix">
         <div class="col-md-12 column">
             <table class="table table-hover table-striped">
@@ -49,7 +63,8 @@
                 <c:forEach var="employee" items="${list}">
                     <tr>
                         <td>${employee.id}</td>
-                        <td>${employee.dept_id}</td>
+<%--                        <td>${employee.dept_id}</td>--%>
+                        <td>${depts.get(employee.dept_id-1).name}</td>
                         <td>${employee.name}</td>
                         <td>${employee.gender==1?"男":"女"}</td>
                         <td>${employee.hire_date}</td>

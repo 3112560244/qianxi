@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,12 +27,15 @@ import java.util.Map;
 @RequestMapping(value = "/employee")
 public class EmployeeController {
 
+
     @Autowired
     private EmployeeService employeeService;
 
     @Autowired
     private DeptService deptService;
 
+
+//    每次请求自动加载
     @ModelAttribute
     public void findAllDepts(Model model){
         Map<Integer,String> genderMap = new HashMap<>();
@@ -127,6 +131,16 @@ public class EmployeeController {
     @GetMapping(value = "allEmployee")
     public String allEmployee(Model model){
         List<Employee> list = employeeService.findAll();
+        System.out.println(list);
+        model.addAttribute("list",list);
+        return "allEmployee";
+    }
+
+    @GetMapping(value = "findByIdEmployee")
+    public String findByIdEmployee(Model model,Integer id){
+        Employee employee = employeeService.findById(id);
+        List<Employee> list = new ArrayList<>();
+        list.add(employee);
         model.addAttribute("list",list);
         return "allEmployee";
     }

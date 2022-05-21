@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Data
 @AllArgsConstructor
@@ -18,8 +19,8 @@ public class Employee {
     private Integer salary;
     private Integer dept_id;
     private Integer status;
-    private Date create_date;
-    private Date update_date;
+    private Timestamp create_date;
+    private Timestamp update_date;
 
 
 }

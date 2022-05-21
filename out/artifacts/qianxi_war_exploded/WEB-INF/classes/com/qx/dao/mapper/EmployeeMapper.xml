@@ -17,6 +17,7 @@
         where
             id = #{id}
     </update>
+
     <select id="delteById">
         update Employee set status = 0 where id = #{id}
 
@@ -32,13 +33,12 @@
         <result property="dept_id" column="dept_id"/>
         <result property="status" column="status"/>
         <result property="create_date" column="create_date"/>
-        <result property="update_date" column="update_data"/>
+        <result property="update_date" column="update_date"/>
     </resultMap>
 
     <select id="findAll" resultMap="list">
         select * from Employee where status = 1;
     </select>
-
 
     <select id="findById" resultType="com.qx.pojo.Employee">
         select * from Employee where id = #{id}
