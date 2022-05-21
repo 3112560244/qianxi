@@ -12,6 +12,8 @@
 <body>
 <div class="container">
 
+    <div class="alert alert-danger" role="alert">${msg}</div>
+
     <div class="row clearfix">
         <div class="col-md-12 column">
             <div class="page-header">
@@ -71,28 +73,28 @@
     <form:form modelAttribute = "emp" action="${pageContext.request.contextPath}/employee/update" method="post">
         <table border="1" width="65%">
             <tr>
-                <td colspan="2"><form:input path="id" type="hidden"/></td>
+                <td colspan="2"><form:input  path="id" type="hidden"  /></td>
             </tr>
             <tr>
                 <td>员工id</td>
                 <td><form:input path="id" disabled="true"/></td>
             </tr>
-            <tr><td>员工姓名</td><td><form:input path="name"/> </td></tr>
+            <tr><td>员工姓名</td><td><form:input path="name" required="true" /> </td></tr>
             <tr>
                 <td>员工性别</td>
-                <td><form:radiobuttons path="gender" items="${genderMap}"/></td>
+                <td><form:radiobuttons path="gender" items="${genderMap}" required="true"/></td>
             </tr>
             <tr>
                 <td>入职日期</td>
-                <td><input type="date" name="hire_date" ></td>
+                <td><input type="date" name="hire_date" required></td>
             </tr>
             <tr>
                 <td>薪酬</td>
-                <td><form:input path="salary" /></td>
+                <td><form:input path="salary"  required="true"/></td>
             </tr>
             <tr>
                 <td>所在部门</td>
-                <td><form:select  path="dept_id">
+                <td><form:select  path="dept_id" required="true">
                     <form:options items="${depts}" itemLabel="name" itemValue="id"/>
                 </form:select ></td>
             </tr>

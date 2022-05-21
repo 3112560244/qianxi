@@ -12,6 +12,8 @@
 <body>
 <div class="container">
 
+    <div class="alert alert-danger" role="alert">${msg}</div>
+
     <div class="row clearfix">
         <div class="col-md-12 column">
             <div class="page-header">
@@ -21,14 +23,7 @@
             </div>
         </div>
     </div>
-    <form action="${pageContext.request.contextPath}/employee/add" method="post">
-        用户姓名：<input type="text" name="name"><br><br><br>
-        用户性别：<input type="text" name="gender"><br><br><br>
-        入职日期：<input type="date" name="hire_date"><br><br><br>
-        薪酬：<input type="text" name="salary"><br><br><br>
-        部门编号：<input type="text" name="dept_id"><br><br><br>
-        <input type="submit" value="添加">
-    </form>
+
 
 
     <form:form modelAttribute = "emp" action="${pageContext.request.contextPath}/employee/add" method="post">

@@ -1,8 +1,8 @@
 package com.qx.service;
 
+import com.qx.pojo.Account;
 import com.qx.pojo.Employee;
-
-import java.util.List;
+import com.qx.pojo.RespBean;
 
 /**
  * @Author: ZedQ
@@ -42,7 +42,7 @@ public interface EmployeeService {
      * @return com.qx.pojo.Employee
      * @Description: 根据id查询用户
      */
-    Employee findById(Integer id);
+    RespBean findById(Integer id);
 
     /*
      * @author ZedQ
@@ -50,9 +50,16 @@ public interface EmployeeService {
      * @return java.util.List<com.qx.pojo.Employee>
      * @Description: 查找所有用户
      */
-    List<Employee> findAll();
+    RespBean findAll();
 
-
+    /*
+     * @author ZedQ
+     * @date 2022/5/21 21:09
+     * @param account
+     * @return com.qx.pojo.RespBean
+     * @Description: 登录
+    */
+    RespBean login(Account account);
 
 
 }

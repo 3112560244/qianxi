@@ -27,4 +27,18 @@
     <context:component-scan base-package="com.qx.controller" />
 
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--            拦截的路径-->
+            <mvc:mapping path="/employee/*"/>
+            <mvc:mapping path="/dept/*"/>
+            <mvc:mapping path="/book/*"/>
+            <!--            不需要拦截的路径-->
+            <mvc:exclude-mapping path="/login"/>
+            <!--                声明自定义拦截器-->
+            <bean class="com.qx.interceptor.MailInterceptor"/>
+        </mvc:interceptor>
+
+    </mvc:interceptors>
+
 </beans>

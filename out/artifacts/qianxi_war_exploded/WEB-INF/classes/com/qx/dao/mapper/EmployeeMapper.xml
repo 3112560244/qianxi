@@ -41,7 +41,12 @@
     </select>
 
     <select id="findById" resultType="com.qx.pojo.Employee">
-        select * from Employee where id = #{id}
+        select * from Employee where id = #{id} and status=1;
+    </select>
+
+
+    <select id="login" resultType="com.qx.pojo.Account">
+        select * from account where name = #{name} and pwd = #{pwd}
     </select>
 
 </mapper>

@@ -6,6 +6,7 @@ package com.qx.controller;/**
 
 import com.qx.pojo.Dept;
 import com.qx.pojo.Employee;
+import com.qx.pojo.RespBean;
 import com.qx.service.DeptService;
 import com.qx.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,7 +76,12 @@ public class EmployeeController {
     @GetMapping(value = "toUpdateEmployee")
     public String toUpdateEmployee(Model model,Integer id){
         System.out.println(id);
-        Employee employee = employeeService.findById(id);
+        RespBean respBean = employeeService.findById(id);
+        if(respBean.getCode()==500){
+            model.addAttribute("msg",respBean.getMessage());
+            return "allEmployee";
+        }
+        Employee employee = (Employee) respBean.getObj();
         model.addAttribute("emp",employee);
         return "updateEmployee";
     }
@@ -130,20 +136,41 @@ public class EmployeeController {
     */
     @GetMapping(value = "allEmployee")
     public String allEmployee(Model model){
-        List<Employee> list = employeeService.findAll();
+        RespBean respBean = employeeService.findAll();
+        if(respBean.getCode()==500){
+            model.addAttribute("msg",respBean.getMessage());
+            return "allEmployee";
+        }
+
+        List<Employee> list = (List<Employee>) respBean.getObj();
         System.out.println(list);
         model.addAttribute("list",list);
         return "allEmployee";
     }
 
+
+    /*
+     * @author ZedQ
+     * @date 2022/5/21 19:01
+     * @param model
+     * @param id
+     * @return java.lang.String
+     * @Description: 根据用户id查询
+    */
     @GetMapping(value = "findByIdEmployee")
     public String findByIdEmployee(Model model,Integer id){
-        Employee employee = employeeService.findById(id);
+        RespBean respBean = employeeService.findById(id);
+        if(respBean.getCode()==500){
+            model.addAttribute("msg",respBean.getMessage());
+            return "allEmployee";
+        }
+
         List<Employee> list = new ArrayList<>();
-        list.add(employee);
+        list.add((Employee) respBean.getObj());
         model.addAttribute("list",list);
         return "allEmployee";
     }
+
 
 
 

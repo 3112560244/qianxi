@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.List;
+
 public class Test1 {
 
 
@@ -22,7 +24,7 @@ public class Test1 {
     public void test1(){
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         EmployeeService employeeService =(EmployeeService) context.getBean("EmployeeServiceImpl");
-        for (Employee employee:employeeService.findAll()){
+        for (Employee employee:(List<Employee>)(employeeService.findAll().getObj())){
             System.out.println(employee);
         }
     }

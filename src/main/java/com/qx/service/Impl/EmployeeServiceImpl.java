@@ -5,7 +5,9 @@ package com.qx.service.Impl;/**
  */
 
 import com.qx.dao.EmployeeMapper;
+import com.qx.pojo.Account;
 import com.qx.pojo.Employee;
+import com.qx.pojo.RespBean;
 import com.qx.service.EmployeeService;
 
 import java.util.List;
@@ -61,8 +63,13 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @Description: 根据id查询用户
      */
     @Override
-    public Employee findById(Integer id) {
-        return employeeMapper.findById(id);
+    public RespBean findById(Integer id) {
+        Employee employee = employeeMapper.findById(id);
+        if(employee==null){
+            return RespBean.error("查询失败");
+        }
+
+        return RespBean.success("查询成功",employeeMapper.findById(id));
     }
 
     /*
@@ -72,8 +79,31 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @Description: 查找所有用户
      */
     @Override
-    public List<Employee> findAll() {
-        return employeeMapper.findAll();
+    public RespBean findAll() {
+        List<Employee> list = employeeMapper.findAll();
+        if(list==null||list.size()==0){
+            return  RespBean.error("查询失败");
+        }
+
+        return RespBean.success("查询成功",list);
+    }
+
+    /*
+     * @author ZedQ
+     * @date 2022/5/21 21:09
+     * @param account
+     * @return com.qx.pojo.RespBean
+     * @Description: 登录
+     */
+    @Override
+    public RespBean login(Account account) {
+        Account login = employeeMapper.login(account);
+        if(login==null){
+            return RespBean.error("登陆失败，账号或密码不正确");
+        }
+
+        return RespBean.success("登陆成功",account);
+
     }
 
 

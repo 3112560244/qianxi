@@ -11,6 +11,8 @@
 
 <div class="container">
 
+    <div class="alert alert-danger" role="alert">${msg}</div>
+
     <div class="row clearfix">
         <div class="col-md-12 column">
             <div class="page-header">
@@ -31,9 +33,10 @@
 
     <form action="${pageContext.request.contextPath}/employee/findByIdEmployee">
         <div class="input-group">
-            <input type="text" name="id" class="form-control" aria-label="...">
+            <input type="text" name="id"  class="form-control" required aria-label="...">
             <div class="input-group-btn">
                 <input class="btn btn-primary" type="submit" value="查询">
+                <a class="btn btn-primary" href="${pageContext.request.contextPath}/employee/allEmployee">重置</a>
             </div>
         </div>
 

@@ -1,5 +1,6 @@
 package com.qx.dao;
 
+import com.qx.pojo.Account;
 import com.qx.pojo.Employee;
 
 import java.util.List;
@@ -48,6 +49,8 @@ public interface EmployeeMapper {
     */
     List<Employee> findAll();
 
+
+    Account login(Account account);
 
 
 }
